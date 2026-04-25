@@ -47,6 +47,21 @@ export default function LoginPage() {
     }
   };
 
+  const onClickOauthBtn = async (e) => {
+    try {
+      // Disable form reload
+      e.preventDefault();
+      // API endpoint
+      const apiEndpoint = "/oauth/auth/login";
+      const loginRequest = await apiClient.post(apiEndpoint, {}, {});
+      console.log(loginRequest);
+    } catch (error) {
+      // Runs if try block fails
+      console.error(error);
+      alert("Oops! Something went wrong:", error.message);
+    }
+  };
+
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
@@ -60,7 +75,10 @@ export default function LoginPage() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <LoginForm onSubmit={onClickAuthentication} />
+            <LoginForm
+              onSubmit={onClickAuthentication}
+              onClickOauthBtn={onClickOauthBtn}
+            />
           </div>
         </div>
       </div>
