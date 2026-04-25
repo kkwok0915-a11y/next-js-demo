@@ -52,9 +52,8 @@ export default function LoginPage() {
       // Disable form reload
       e.preventDefault();
       // API endpoint
-      const apiEndpoint = "/v1/auth/login";
-      const loginRequest = await apiClient.get(apiEndpoint, {});
-      console.log(loginRequest);
+      window.location.href =
+        "https://express-js-on-vercel-five-tau.vercel.app/v1/auth/login";
     } catch (error) {
       // Runs if try block fails
       console.error(error);
