@@ -10,7 +10,8 @@ import { redirect } from "next/navigation";
 import data from "./data.json";
 import { useSessionData } from "@/hooks/SessionHooks";
 
-export default function Page() {
+export default async function Page() {
+  const data = await getData();
   const { userDetails, isUserDetailsAvailable } = useSessionData();
 
   if (!isUserDetailsAvailable) {

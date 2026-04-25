@@ -1,6 +1,6 @@
 import apiClient from "@/utils/apiClient";
 
-async function getData() {
+export async function getData() {
   const res = await apiClient.get("/api-data");
   if (!res.ok) throw new Error("Failed to fetch data");
   return res.json();
