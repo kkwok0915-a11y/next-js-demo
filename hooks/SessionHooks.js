@@ -6,10 +6,15 @@ const SessionDataContext = createContext(undefined);
 export function SessionDataProvider({ children }) {
   const [userDetails, setUserDetails] = useState({
     userId: undefined,
+    userName: undefined,
     email: undefined,
   });
 
-  const isUserDetailsAvailable = !!(userDetails.userId && userDetails.email);
+  const isUserDetailsAvailable = !!(
+    userDetails.userId &&
+    userDetails.email &&
+    userDetails.userName
+  );
 
   return (
     <SessionDataContext.Provider

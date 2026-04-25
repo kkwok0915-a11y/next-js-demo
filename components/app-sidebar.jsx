@@ -154,15 +154,14 @@ export function AppSidebar({ ...props }) {
   });
 
   React.useEffect(() => {
-    const userId = userDetails?.userId;
+    const userName = userDetails?.userName;
     const email = userDetails?.email;
-    console.log(userDetails);
     // Check user details
-    if (userId && email) {
+    if (userName && email) {
       setData((prev) => ({
         ...prev,
         user: {
-          name: userId,
+          name: userName,
           email: email,
           avatar: "/avatars/shadcn.jpg",
         },
