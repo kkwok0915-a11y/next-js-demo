@@ -1,10 +1,15 @@
 "use client";
 
 import { LoginForm } from "@/components/login-form";
+import { useSessionData } from "@/hooks/SessionHooks";
 import apiClient from "@/utils/apiClient";
 import { GalleryVerticalEndIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const { setUserDetails } = useSessionData();
+
   const onClickAuthentication = async (e) => {
     try {
       // Disable form reload
@@ -15,12 +20,21 @@ export default function LoginPage() {
       const userPassword = e.target[1].value;
       // Check userEmail && userPassword
       if (userEmail && userPassword) {
-        const regRequest = await apiClient.post(
-          "/v1/authentication",
-          { userEmail, userPassword },
-          {},
-        );
-        console.log(regRequest);
+        // API endpoint
+        const apiEndpoint = "/v1/authentication";
+        // API body
+        const apiBody = { userEmail, userPassword };
+        const regRequest = await apiClient.post(apiEndpoint, apiBody, {});
+        // Get userId
+        const userId = regRequest?.user?.id;
+        // Update userDetails
+        setUserDetails((prev) => ({
+          ...prev,
+          userId: userId,
+          email: userEmail,
+        }));
+        // Navigate to dashboard
+        router.push("/dashboard");
       } else {
         console.log("Invalid information");
       }
