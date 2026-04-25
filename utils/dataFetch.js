@@ -1,8 +1,24 @@
-import apiClient from "@/utils/apiClient";
-
+// utils/dataFetch.js
 export async function getData() {
-  const res = await apiClient.get("/v1/api-data");
-  console.log(res);
-  if (!res.ok) throw new Error("Failed to fetch data");
-  return res.data;
+  // 1. You MUST use an absolute URL when fetching on the server.
+  // Replace this with your actual production or dev URL.
+  const baseUrl = "https://express-js-on-vercel-five-tau.vercel.app";
+
+  try {
+    const res = await fetch(`${baseUrl}/v1/api-data`, {
+      cache: "no-store", // Ensures the dashboard always shows fresh data
+    });
+
+    if (!res.ok) {
+      // Check your TERMINAL (VS Code) to see this error log
+      console.error(`Fetch failed: ${res.status} ${res.statusText}`);
+      return [];
+    }
+
+    return await res.json();
+  } catch (error) {
+    // This logs to your server console, not the browser
+    console.error("Critical Fetch Error:", error);
+    throw error;
+  }
 }
