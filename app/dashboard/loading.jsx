@@ -1,11 +1,3 @@
-import apiClient from "@/utils/apiClient";
-
-export async function getData() {
-  const res = await apiClient.get("/api-data");
-  if (!res.ok) throw new Error("Failed to fetch data");
-  return res.json();
-}
-
 export default function Loading() {
   // You can render any UI inside Loading, including Skeleton loaders
   return (
