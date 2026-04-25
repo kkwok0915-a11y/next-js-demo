@@ -153,6 +153,7 @@ export function AppSidebar({ userDetails, ...props }) {
   React.useEffect(() => {
     const userId = userDetails?.userId;
     const email = userDetails?.email;
+    console.log(userDetails);
     // Check user details
     if (userId && email) {
       setData((prev) => ({
