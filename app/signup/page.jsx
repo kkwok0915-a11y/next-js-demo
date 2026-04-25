@@ -2,25 +2,27 @@
 
 import { SignupForm } from "@/components/signup-form";
 import apiClient from "@/utils/apiClient";
-import axios from "axios";
 import { GalleryVerticalEndIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 export default function SignupPage() {
+  const router = useRouter();
   const onClickRegisteration = async (e) => {
     try {
       // Disable form reload
       e.preventDefault();
+      // Get userName
+      const userName = e.target[0].value;
       // Get userEmail
-      const userEmail = e.target[0].value;
+      const userEmail = e.target[1].value;
       // Get password
-      const userPassword = e.target[1].value;
+      const userPassword = e.target[2].value;
       // Check userEmail && userPassword
       if (userEmail && userPassword) {
-        const regRequest = await apiClient.post(
-          "/v1/registration",
-          { userEmail, userPassword },
-          {},
-        );
+        const apiEndpoint = "/v1/registration";
+        const apiBody = { userEmail, userPassword, userName };
+        const regRequest = await apiClient.post(apiEndpoint, apiBody, {});
+        router.push("/login");
       } else {
         console.log("Invalid information");
       }

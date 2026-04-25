@@ -19,7 +19,6 @@ export function SignupForm({ className, ...props }) {
             Fill in the form below to create your account
           </p>
         </div>
-        {/*
         <Field>
           <FieldLabel htmlFor="name">Full Name</FieldLabel>
           <Input
@@ -27,9 +26,9 @@ export function SignupForm({ className, ...props }) {
             type="text"
             placeholder="John Doe"
             required
-            className="bg-background" />
+            className="bg-background"
+          />
         </Field>
-        */}
         <Field>
           <FieldLabel htmlFor="email">Email</FieldLabel>
           <Input

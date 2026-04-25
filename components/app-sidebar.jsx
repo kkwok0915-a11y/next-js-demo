@@ -31,8 +31,11 @@ import {
   FileIcon,
   CommandIcon,
 } from "lucide-react";
+import { useSessionData } from "@/hooks/SessionHooks";
 
-export function AppSidebar({ userDetails, ...props }) {
+export function AppSidebar({ ...props }) {
+  const { userDetails } = useSessionData();
+
   const [data, setData] = React.useState({
     user: {
       name: "shadcn",
@@ -42,12 +45,12 @@ export function AppSidebar({ userDetails, ...props }) {
     navMain: [
       {
         title: "Dashboard",
-        url: "#",
+        url: "/dashboard",
         icon: <LayoutDashboardIcon />,
       },
       {
         title: "Lifecycle",
-        url: "#",
+        url: "/dashboard/lifecycle",
         icon: <ListIcon />,
       },
       {
