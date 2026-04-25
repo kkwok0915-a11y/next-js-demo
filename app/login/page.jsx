@@ -53,7 +53,7 @@ export default function LoginPage() {
       e.preventDefault();
       // API endpoint
       const apiEndpoint = "/v1/auth/login";
-      const loginRequest = await apiClient.post(apiEndpoint, {}, {});
+      const loginRequest = await apiClient.get(apiEndpoint, {});
       console.log(loginRequest);
     } catch (error) {
       // Runs if try block fails
