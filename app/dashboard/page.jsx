@@ -1,4 +1,3 @@
-export const dynamic = "force-dynamic"; //
 import { getData } from "@/utils/dataFetch";
 import DashboardClient from "../../components/dashboard-client";
 
