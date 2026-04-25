@@ -1,16 +1,41 @@
-"use client"
+"use client";
 
-import { SignupForm } from "@/components/signup-form"
-import { GalleryVerticalEndIcon } from "lucide-react"
+import { SignupForm } from "@/components/signup-form";
+import apiClient from "@/utils/apiClient";
+import axios from "axios";
+import { GalleryVerticalEndIcon } from "lucide-react";
 
 export default function SignupPage() {
+  const onClickRegisteration = async (e) => {
+    try {
+      // Disable form reload
+      e.preventDefault();
+      // Get userEmail
+      const userEmail = e.target[0].value;
+      // Get password
+      const userPassword = e.target[1].value;
+      // Check userEmail && userPassword
+      if (userEmail && userPassword) {
+        const regRequest = await apiClient.post(
+          "/v1/registration",
+          { userEmail, userPassword },
+          {},
+        );
+        console.log(regRequest);
+      } else {
+        console.log("Invalid information");
+      }
+    } catch (error) {
+      // Runs if try block fails
+      alert("Oops! Something went wrong:", error.message);
+    }
+  };
   return (
     <div className="grid min-h-svh lg:grid-cols-2">
       <div className="flex flex-col gap-4 p-6 md:p-10">
         <div className="flex justify-center gap-2 md:justify-start">
           <a href="#" className="flex items-center gap-2 font-medium">
-            <div
-              className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
+            <div className="flex size-6 items-center justify-center rounded-md bg-primary text-primary-foreground">
               <GalleryVerticalEndIcon className="size-4" />
             </div>
             Acme Inc.
@@ -18,7 +43,7 @@ export default function SignupPage() {
         </div>
         <div className="flex flex-1 items-center justify-center">
           <div className="w-full max-w-xs">
-            <SignupForm />
+            <SignupForm onSubmit={onClickRegisteration} />
           </div>
         </div>
       </div>
@@ -26,7 +51,8 @@ export default function SignupPage() {
         <img
           src="/placeholder.svg"
           alt="Image"
-          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale" />
+          className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+        />
       </div>
     </div>
   );
