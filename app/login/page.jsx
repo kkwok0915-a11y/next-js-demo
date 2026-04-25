@@ -52,7 +52,7 @@ export default function LoginPage() {
       // Disable form reload
       e.preventDefault();
       // API endpoint
-      const apiEndpoint = "/oauth/auth/login";
+      const apiEndpoint = "/v1/auth/login";
       const loginRequest = await apiClient.post(apiEndpoint, {}, {});
       console.log(loginRequest);
     } catch (error) {
