@@ -33,7 +33,7 @@ import {
 } from "lucide-react";
 import { useSessionData } from "@/hooks/SessionHooks";
 
-const [data, setData] = useState({
+const [data, setData] = React.useState({
   user: {
     name: "shadcn",
     email: "m@example.com",
