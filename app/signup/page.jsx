@@ -21,7 +21,6 @@ export default function SignupPage() {
           { userEmail, userPassword },
           {},
         );
-        console.log(regRequest);
       } else {
         console.log("Invalid information");
       }
