@@ -11,7 +11,7 @@ const nextConfig = {
           { key: "Access-Control-Allow-Credentials", value: "true" },
           {
             key: "Access-Control-Allow-Origin",
-            value: "https://express-js-on-vercel-five-tau.vercel.app/",
+            value: "https://express-js-on-vercel-five-tau.vercel.app",
           },
           {
             key: "Access-Control-Allow-Methods",
