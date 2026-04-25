@@ -26,7 +26,9 @@ export default function LoginPage() {
         const apiBody = { userEmail, userPassword };
         const regRequest = await apiClient.post(apiEndpoint, apiBody, {});
         // Get userId
-        const userId = regRequest?.user?.id;
+        const userId = regRequest.data?.user?.id;
+        console.log(regRequest.data);
+        console.log(userId);
         // Update userDetails
         setUserDetails((prev) => ({
           ...prev,
