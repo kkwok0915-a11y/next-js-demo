@@ -1,6 +1,7 @@
 "use client"; // Required for Context
 
 import { createContext, useContext, useState } from "react";
+import { email } from "zod";
 
 const SessionDataContext = createContext(undefined);
 
@@ -9,8 +10,15 @@ export function SessionDataProvider({ children }) {
     userId: undefined,
     email: undefined,
   });
+
+  const isUserDetailsAvailable = () => {
+    return userDetails.userId && userDetails.email;
+  };
+
   return (
-    <SessionDataContext.Provider value={{ userDetails, setUserDetails }}>
+    <SessionDataContext.Provider
+      value={{ userDetails, setUserDetails, isUserDetailsAvailable }}
+    >
       {children}
     </SessionDataContext.Provider>
   );

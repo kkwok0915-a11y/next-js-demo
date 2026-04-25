@@ -31,144 +31,141 @@ import {
   FileIcon,
   CommandIcon,
 } from "lucide-react";
-import { useSessionData } from "@/hooks/SessionHooks";
 
-const [data, setData] = React.useState({
-  user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
-  },
-  navMain: [
-    {
-      title: "Dashboard",
-      url: "#",
-      icon: <LayoutDashboardIcon />,
+export function AppSidebar({ userDetails, ...props }) {
+  const [data, setData] = React.useState({
+    user: {
+      name: "shadcn",
+      email: "m@example.com",
+      avatar: "/avatars/shadcn.jpg",
     },
-    {
-      title: "Lifecycle",
-      url: "#",
-      icon: <ListIcon />,
-    },
-    {
-      title: "Analytics",
-      url: "#",
-      icon: <ChartBarIcon />,
-    },
-    {
-      title: "Projects",
-      url: "#",
-      icon: <FolderIcon />,
-    },
-    {
-      title: "Team",
-      url: "#",
-      icon: <UsersIcon />,
-    },
-  ],
-  navClouds: [
-    {
-      title: "Capture",
-      icon: <CameraIcon />,
-      isActive: true,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Proposal",
-      icon: <FileTextIcon />,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Prompts",
-      icon: <FileTextIcon />,
-      url: "#",
-      items: [
-        {
-          title: "Active Proposals",
-          url: "#",
-        },
-        {
-          title: "Archived",
-          url: "#",
-        },
-      ],
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Settings",
-      url: "#",
-      icon: <Settings2Icon />,
-    },
-    {
-      title: "Get Help",
-      url: "#",
-      icon: <CircleHelpIcon />,
-    },
-    {
-      title: "Search",
-      url: "#",
-      icon: <SearchIcon />,
-    },
-  ],
-  documents: [
-    {
-      name: "Data Library",
-      url: "#",
-      icon: <DatabaseIcon />,
-    },
-    {
-      name: "Reports",
-      url: "#",
-      icon: <FileChartColumnIcon />,
-    },
-    {
-      name: "Word Assistant",
-      url: "#",
-      icon: <FileIcon />,
-    },
-  ],
-});
-
-const { userDetails } = useSessionData();
-
-React.useEffect(() => {
-  const userId = userDetails?.userId;
-  const email = userDetails?.email;
-  // Check user details
-  if (userId && email) {
-    setData((prev) => ({
-      ...prev,
-      user: {
-        name: userId,
-        email: email,
-        avatar: "/avatars/shadcn.jpg",
+    navMain: [
+      {
+        title: "Dashboard",
+        url: "#",
+        icon: <LayoutDashboardIcon />,
       },
-    }));
-  }
-}, [userDetails]);
+      {
+        title: "Lifecycle",
+        url: "#",
+        icon: <ListIcon />,
+      },
+      {
+        title: "Analytics",
+        url: "#",
+        icon: <ChartBarIcon />,
+      },
+      {
+        title: "Projects",
+        url: "#",
+        icon: <FolderIcon />,
+      },
+      {
+        title: "Team",
+        url: "#",
+        icon: <UsersIcon />,
+      },
+    ],
+    navClouds: [
+      {
+        title: "Capture",
+        icon: <CameraIcon />,
+        isActive: true,
+        url: "#",
+        items: [
+          {
+            title: "Active Proposals",
+            url: "#",
+          },
+          {
+            title: "Archived",
+            url: "#",
+          },
+        ],
+      },
+      {
+        title: "Proposal",
+        icon: <FileTextIcon />,
+        url: "#",
+        items: [
+          {
+            title: "Active Proposals",
+            url: "#",
+          },
+          {
+            title: "Archived",
+            url: "#",
+          },
+        ],
+      },
+      {
+        title: "Prompts",
+        icon: <FileTextIcon />,
+        url: "#",
+        items: [
+          {
+            title: "Active Proposals",
+            url: "#",
+          },
+          {
+            title: "Archived",
+            url: "#",
+          },
+        ],
+      },
+    ],
+    navSecondary: [
+      {
+        title: "Settings",
+        url: "#",
+        icon: <Settings2Icon />,
+      },
+      {
+        title: "Get Help",
+        url: "#",
+        icon: <CircleHelpIcon />,
+      },
+      {
+        title: "Search",
+        url: "#",
+        icon: <SearchIcon />,
+      },
+    ],
+    documents: [
+      {
+        name: "Data Library",
+        url: "#",
+        icon: <DatabaseIcon />,
+      },
+      {
+        name: "Reports",
+        url: "#",
+        icon: <FileChartColumnIcon />,
+      },
+      {
+        name: "Word Assistant",
+        url: "#",
+        icon: <FileIcon />,
+      },
+    ],
+  });
 
-export function AppSidebar({ ...props }) {
+  React.useEffect(() => {
+    const userId = userDetails?.userId;
+    const email = userDetails?.email;
+    // Check user details
+    if (userId && email) {
+      setData((prev) => ({
+        ...prev,
+        user: {
+          name: userId,
+          email: email,
+          avatar: "/avatars/shadcn.jpg",
+        },
+      }));
+    }
+  }, [userDetails]);
+
   return (
     <Sidebar collapsible="offcanvas" {...props}>
       <SidebarHeader>
