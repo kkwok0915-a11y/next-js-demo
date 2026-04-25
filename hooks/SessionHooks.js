@@ -18,7 +18,7 @@ export function SessionDataProvider({ children }) {
 
 // Custom hook for easier consumption
 export function useSessionData() {
-  const context = useContext(ThemeContext);
+  const context = useContext(SessionDataContext);
   if (!context)
     throw new Error("useSessionData must be used within a SessionDataProvider");
   return context;
