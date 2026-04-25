@@ -27,6 +27,7 @@ export default function SignupPage() {
       }
     } catch (error) {
       // Runs if try block fails
+      console.error(error);
       alert("Oops! Something went wrong:", error.message);
     }
   };

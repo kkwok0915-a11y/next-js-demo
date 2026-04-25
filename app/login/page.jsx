@@ -25,6 +25,7 @@ export default function LoginPage() {
       }
     } catch (error) {
       // Runs if try block fails
+      console.error(error);
       alert("Oops! Something went wrong:", error.message);
     }
   };
