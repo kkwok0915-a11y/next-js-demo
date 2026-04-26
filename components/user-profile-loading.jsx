@@ -1,4 +1,4 @@
-export default function Loading() {
+export default function UserProfileLoading() {
   // You can render any UI inside Loading, including Skeleton loaders
   return (
     <div className="flex items-center justify-center min-h-screen">
