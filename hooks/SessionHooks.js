@@ -10,6 +10,15 @@ export function SessionDataProvider({ children }) {
     email: undefined,
   });
 
+  const clearUserDetails = () => {
+    setUserDetails((prev) => ({
+      ...prev,
+      userName: undefined,
+      userId: undefined,
+      email: undefined,
+    }));
+  };
+
   const isUserDetailsAvailable = !!(
     userDetails.userId &&
     userDetails.email &&
@@ -18,7 +27,12 @@ export function SessionDataProvider({ children }) {
 
   return (
     <SessionDataContext.Provider
-      value={{ userDetails, setUserDetails, isUserDetailsAvailable }}
+      value={{
+        userDetails,
+        setUserDetails,
+        clearUserDetails,
+        isUserDetailsAvailable,
+      }}
     >
       {children}
     </SessionDataContext.Provider>

@@ -32,9 +32,11 @@ import {
   CommandIcon,
 } from "lucide-react";
 import { useSessionData } from "@/hooks/SessionHooks";
+import { useRouter } from "next/navigation";
 
 export function AppSidebar({ ...props }) {
-  const { userDetails } = useSessionData();
+  const router = useRouter();
+  const { userDetails, clearUserDetails } = useSessionData();
 
   const [data, setData] = React.useState({
     user: {
@@ -153,6 +155,11 @@ export function AppSidebar({ ...props }) {
     ],
   });
 
+  const onClickLogOutBtn = () => {
+    clearUserDetails();
+    router.push("/login");
+  };
+
   React.useEffect(() => {
     const userName = userDetails?.userName;
     const email = userDetails?.email;
@@ -193,7 +200,7 @@ export function AppSidebar({ ...props }) {
         <NavSecondary items={data.navSecondary} className="mt-auto" />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={data.user} onClickLogOutBtn={onClickLogOutBtn} />
       </SidebarFooter>
     </Sidebar>
   );

@@ -24,7 +24,7 @@ import {
   LogOutIcon,
 } from "lucide-react";
 
-export function NavUser({ user }) {
+export function NavUser({ user, onClickLogOutBtn }) {
   const { isMobile } = useSidebar();
 
   return (
@@ -89,7 +89,7 @@ export function NavUser({ user }) {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem onClick={onClickLogOutBtn}>
               <LogOutIcon />
               Log out
             </DropdownMenuItem>
