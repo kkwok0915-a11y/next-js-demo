@@ -1,18 +1,7 @@
 // components/Layout.jsx
-import { AppSidebar } from "@/components/app-sidebar";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { useSessionData } from "@/hooks/SessionHooks";
-import React from "react";
-
-const geistSans = {
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-};
-
-const geistMono = {
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-};
+import SideBarComponent from "@/components/ui/sidebar-component";
+import UserProfileLoadingScreen from "@/components/ui/userData-loading";
+import React, { Suspense } from "react";
 
 export const metadata = {
   title: "Dashboard",
@@ -22,12 +11,9 @@ export const metadata = {
 const Layout = ({ children }) => {
   return (
     <div className="dashboard-content">
-      <SidebarProvider
-        style={{ "--sidebar-width": "18rem", "--header-height": "3rem" }}
-      >
-        <AppSidebar variant="inset" />
-        <SidebarInset>{children}</SidebarInset>
-      </SidebarProvider>
+      <Suspense fallback={<UserProfileLoadingScreen />}>
+        <SideBarComponent children={children}></SideBarComponent>
+      </Suspense>
     </div>
   );
 };

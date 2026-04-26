@@ -7,16 +7,14 @@ import { SectionCards } from "@/components/section-cards";
 import { ChartAreaInteractive } from "@/components/chart-area-interactive";
 import { DataTable } from "@/components/data-table";
 
-export default async function DashboardClient() {
-  const data = await getData();
-
+export default function DashboardClient({ initialData, chartData }) {
   return (
     <div>
       <SiteHeader />
       <div className="flex flex-1 flex-col gap-4 py-4">
         <SectionCards />
-        <ChartAreaInteractive />
-        <DataTable data={data} />
+        <ChartAreaInteractive chartData={chartData} />
+        <DataTable data={initialData} />
       </div>
     </div>
   );
