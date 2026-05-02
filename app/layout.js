@@ -1,8 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import "./globals.css";
 import { SessionDataProvider } from "@/hooks/SessionHooks";
-import { AppSidebar } from "@/components/app-sidebar";
+import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
